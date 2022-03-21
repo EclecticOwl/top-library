@@ -31,6 +31,18 @@ let display = () => {
         let title = document.createElement('td')
         let author = document.createElement('td')
         let pages = document.createElement('td')
+        let read = document.createElement('td')
+        let deleteTd = document.createElement('td')
+
+
+        let readCheck = document.createElement('input')
+        readCheck.type = 'checkbox'
+        let deleteCheck = document.createElement('input')
+        deleteCheck.type = 'checkbox'
+        read.append(readCheck)
+        deleteTd.append(deleteCheck)
+
+
 
         title.textContent += book.title
         author.textContent += book.author
@@ -40,9 +52,10 @@ let display = () => {
         libTr.append(title)
         libTr.append(author)
         libTr.append(pages)
+        libTr.append(read)
+        libTr.append(deleteTd)
     })
 }
-
 const addBookForm = document.querySelector('#addBookForm')
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -59,7 +72,6 @@ addBookForm.addEventListener('submit', (e) => {
     clearDisplay()
     display()
 })
-
 const clearDisplay = () => {
     const books = document.querySelectorAll('.book')
     books.forEach( (book) => {
@@ -70,3 +82,4 @@ const clearDisplay = () => {
 
 
 
+display()
