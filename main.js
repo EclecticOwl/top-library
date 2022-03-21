@@ -20,12 +20,14 @@ myLibrary.push(book2)
 myLibrary.push(book3)
 
 
-// Grabbing Library table and creating elements
-let libTable = document.querySelector('#library-table')
+// Grabbing library table and displaying books
+const libTable = document.querySelector('#library-table')
 
 let display = () => {
+
     myLibrary.forEach( (book) => {
         let libTr = document.createElement('tr')
+        libTr.classList.add('book')
         let title = document.createElement('td')
         let author = document.createElement('td')
         let pages = document.createElement('td')
@@ -41,15 +43,29 @@ let display = () => {
     })
 }
 
+const addBookForm = document.querySelector('#addBookForm')
+addBookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
+    let title = addBookForm.elements[0].value
+    let author = addBookForm.elements[1].value
+    let pages = addBookForm.elements[2].value
 
+    let newBook = new Book(title, author, pages)
+    myLibrary.push(newBook)
 
+    addBookForm.reset()
 
+    clearDisplay()
+    display()
+})
 
-
-
-
-
+const clearDisplay = () => {
+    const books = document.querySelectorAll('.book')
+    books.forEach( (book) => {
+        libTable.removeChild(book);
+    })
+}
 
 
 
