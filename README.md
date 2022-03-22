@@ -4,3 +4,6 @@
 
 
 ### Library app that catalogues book information
+
+#### Does not save book information (No local Storage or anything)
+#### Full CRUD operations
