@@ -2,12 +2,12 @@ myLibrary = []
 
 
 // Book Class
-
 class Book {
-    constructor(title, author, pages) {
+    constructor(title, author, pages, read = false) {
         this.title = title
         this.author = author
         this.pages = pages
+        this.read = read
     }
 }
 
@@ -36,7 +36,14 @@ let ui = () => {
 
 
         let readCheck = document.createElement('input')
+        readCheck.classList.add('readCheck')
         readCheck.type = 'checkbox'
+        
+        if (book.read == true) {
+            readCheck.checked = true
+        }else {
+            readCheck.checked = false
+        }
 
         
         let deleteCheck = document.createElement('input')
@@ -60,7 +67,7 @@ let ui = () => {
         libTr.append(deleteTd)
     })
 
-    // Checking UI for checks in read and delete columns
+    // Checking UI for check marks in read and delete columns
 
     let bookCheck = document.querySelectorAll('.book').forEach( (element, index) => {
         element.addEventListener('change', (e) => {
@@ -72,6 +79,12 @@ let ui = () => {
                 }else {
                     e.target.checked = false
                 }
+            }else if (e.target.className == 'readCheck') {
+                element.classList.toggle('markAsRead')
+                myLibrary[index]['read'] = true
+                e.target.checked = true
+                clearui()
+                ui()
             }
         })
     })
