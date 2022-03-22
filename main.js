@@ -63,8 +63,9 @@ let ui = () => {
     let bookCheck = document.querySelectorAll('.book').forEach( (element, index) => {
         element.addEventListener('change', (e) => {
             if (e.target.className == 'deleteCheck') {
-                console.log(e)
-                console.log(index)
+                myLibrary.splice(index, 1);
+                clearui()
+                ui()
             }
         })
     })
