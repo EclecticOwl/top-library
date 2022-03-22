@@ -37,6 +37,8 @@ let ui = () => {
 
         let readCheck = document.createElement('input')
         readCheck.type = 'checkbox'
+
+        
         let deleteCheck = document.createElement('input')
         deleteCheck.classList.add('deleteCheck')
         deleteCheck.type = 'checkbox'
@@ -63,9 +65,13 @@ let ui = () => {
     let bookCheck = document.querySelectorAll('.book').forEach( (element, index) => {
         element.addEventListener('change', (e) => {
             if (e.target.className == 'deleteCheck') {
-                myLibrary.splice(index, 1);
-                clearui()
-                ui()
+                if (confirm('Are you sure you want to delete this book?')) {
+                    myLibrary.splice(index, 1);
+                    clearui()
+                    ui()
+                }else {
+                    e.target.checked = false
+                }
             }
         })
     })
