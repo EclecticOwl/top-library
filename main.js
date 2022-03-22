@@ -23,7 +23,7 @@ myLibrary.push(book3)
 // Grabbing library table and displaying books
 const libTable = document.querySelector('#library-table')
 
-let display = () => {
+let ui = () => {
 
     myLibrary.forEach( (book) => {
         let libTr = document.createElement('tr')
@@ -38,7 +38,9 @@ let display = () => {
         let readCheck = document.createElement('input')
         readCheck.type = 'checkbox'
         let deleteCheck = document.createElement('input')
+        deleteCheck.classList.add('deleteCheck')
         deleteCheck.type = 'checkbox'
+        deleteCheck.checked = false
         read.append(readCheck)
         deleteTd.append(deleteCheck)
 
@@ -55,6 +57,13 @@ let display = () => {
         libTr.append(read)
         libTr.append(deleteTd)
     })
+    let bookCheck = document.querySelectorAll('.book').forEach( (element) => {
+        element.addEventListener('change', (e) => {
+            if (e.target.className == 'deleteCheck') {
+                element.classList.toggle('activeDelete')
+            }
+        })
+    })
 }
 const addBookForm = document.querySelector('#addBookForm')
 addBookForm.addEventListener('submit', (e) => {
@@ -69,10 +78,12 @@ addBookForm.addEventListener('submit', (e) => {
 
     addBookForm.reset()
 
-    clearDisplay()
-    display()
+    clearui()
+    ui()
 })
-const clearDisplay = () => {
+
+
+const clearui = () => {
     const books = document.querySelectorAll('.book')
     books.forEach( (book) => {
         libTable.removeChild(book);
@@ -82,4 +93,9 @@ const clearDisplay = () => {
 
 
 
-display()
+
+
+
+
+
+ui()
