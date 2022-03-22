@@ -24,7 +24,7 @@ myLibrary.push(book3)
 const libTable = document.querySelector('#library-table')
 
 let ui = () => {
-
+    // Displays the books currently in the array
     myLibrary.forEach( (book) => {
         let libTr = document.createElement('tr')
         libTr.classList.add('book')
@@ -57,14 +57,20 @@ let ui = () => {
         libTr.append(read)
         libTr.append(deleteTd)
     })
-    let bookCheck = document.querySelectorAll('.book').forEach( (element) => {
+
+    // Checking UI for checks in read and delete columns
+
+    let bookCheck = document.querySelectorAll('.book').forEach( (element, index) => {
         element.addEventListener('change', (e) => {
             if (e.target.className == 'deleteCheck') {
-                element.classList.toggle('activeDelete')
+                console.log(e)
+                console.log(index)
             }
         })
     })
 }
+
+//Adds a book to the array
 const addBookForm = document.querySelector('#addBookForm')
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -82,15 +88,13 @@ addBookForm.addEventListener('submit', (e) => {
     ui()
 })
 
-
+//Clears the table to prevent duplicates
 const clearui = () => {
     const books = document.querySelectorAll('.book')
     books.forEach( (book) => {
         libTable.removeChild(book);
     })
 }
-
-
 
 
 
