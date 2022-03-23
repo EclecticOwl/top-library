@@ -118,7 +118,12 @@ const clearui = () => {
 
 
 
+let toggleTheme = (a) => {
+    let sheets = document.getElementsByTagName('link');
 
+    sheets[0].href = a;
+    
+}
 
 
 
