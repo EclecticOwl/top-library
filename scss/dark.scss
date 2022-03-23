@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+$base-color: rgba(0, 0, 0, 0.74);
+$table-odd-color: rgba(255, 249, 249, 0.274);
+$menu-bg-color: #d8d8d8d2;
+$font-color: rgba(0, 0, 0, 0.747);
+$box-shadow: 0 1px 6px grey;
+$table-font-color: rgb(235, 230, 230);
+$input-outline: 1px solid rgba(0, 0, 0, 0.527);
+
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 6em;
+    height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+    background-color: $base-color;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    padding: .75em;
+    background-color: $menu-bg-color;
+    color: $font-color;
+
+    h2 {
+        margin: 1em auto 0;
+        font-size: 1.5rem;
+
+    }
+
+    form {
+        margin: 4em auto 0;
+        gap: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: .25em;
+        
+
+        input {
+            border-radius: .5em;
+            text-align: center;
+            height: 2em;
+            border: none;
+            box-shadow: $box-shadow;
+
+            &:focus {
+                outline: $input-outline;
+            }
+        }
+        div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        div:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            margin-top: 1em;
+            font-family: inherit;
+            padding: .25em 2em;
+            border-radius: .5em;
+            color: inherit;
+            border: none;
+            box-shadow: $box-shadow;
+        }
+
+    }
+}
+main {
+    display: flex;
+    justify-content: center;
+
+
+    .library-container {
+        width: 100%;
+        margin-top: 6em;
+        padding: 2em;
+
+        table {
+            width: 100%;
+            text-align: center;
+            color: $table-font-color;
+
+            tr:first-child {
+                font-size: 1.4rem;
+            }
+            td {
+                padding: .25em;
+                border-radius: 5px;
+            }
+            tr:nth-child(even) {
+                background-color: $table-odd-color;
+            }
+        }
+    }
+}
