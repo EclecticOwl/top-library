@@ -80,11 +80,19 @@ let ui = () => {
                     e.target.checked = false
                 }
             }else if (e.target.className == 'readCheck') {
-                element.classList.toggle('markAsRead')
-                myLibrary[index]['read'] = true
-                e.target.checked = true
-                clearui()
-                ui()
+                if (myLibrary[index]['read'] == false) {
+                     element.classList.add('markAsRead')
+                    myLibrary[index]['read'] = true
+                    e.target.checked = true
+                    clearui()
+                    ui()
+                }else {
+                    element.classList.remove('markAsRead')
+                    myLibrary[index]['read'] = false
+                    e.target.checked = false
+                    clearui()
+                    ui()
+                }
             }
         })
     })
